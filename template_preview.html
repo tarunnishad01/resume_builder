@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Preview</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Add your CSS here -->
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #007BFF;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+#preview-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: white;
+    width: 80%;
+    min-height: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+</style>
+<body>
+    <header>
+        <h1>Template Preview</h1>
+    </header>
+    <main>
+        <div id="preview-container">
+            <!-- Template preview will load here -->
+        </div>
+        <button id="back-button">Back</button>
+    </main>
+     <!-- Add your JavaScript -->
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const previewContainer = document.getElementById('preview-container');
+
+    // Fetch and display a sample template (adjust fetch path as needed)
+    fetch('E:\Front-End Development\Auto Resumer builder\Templates\templates_result\template5.html')
+        .then(response => response.text())
+        .then(html => {
+            previewContainer.innerHTML = html;
+        })
+        .catch(err => {
+            previewContainer.innerHTML = `<p>Failed to load template. Error: ${err.message}</p>`;
+        });
+
+    // Back button functionality
+    const backButton = document.getElementById('back-button');
+    backButton.addEventListener('click', () => {
+        window.history.back();
+    });
+});
+
+</script>
+</html>
