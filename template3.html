@@ -9,33 +9,32 @@
 <body class="bg-white text-gray-800 font-serif">
     <main class="max-w-4xl mx-auto p-8">
         <header class="text-center border-b pb-6">
-            <h1 class="text-4xl font-bold">Michael Johnson</h1>
-            <p>michaelj@example.com | +91 98765-43210 | 78 Palm Avenue, Mumbai, India</p>
+            <h1 class="text-4xl font-bold">{{ first_name }} {{ last_name }}</h1>
+            <p>{{ email }} | {{ phone }} | {{ address }}</p>
         </header>
         <section class="mt-6">
             <h2 class="text-2xl font-bold border-b pb-2">Professional Summary</h2>
-            <p>Creative graphic designer with a passion for crafting visually appealing designs and enhancing brand identity.</p>
+            <p>{{ summary }}</p>
         </section>
         <section class="mt-6">
             <h2 class="text-2xl font-bold border-b pb-2">Work Experience</h2>
+            {% for job in work_experience %}
             <div class="mt-4">
-                <h3 class="font-semibold">Graphic Designer - Pixel Studio</h3>
-                <p class="text-sm text-gray-600">Apr 2020 - Present</p>
-                <p>Designed marketing materials, including logos, brochures, and digital banners.</p>
+                <h3 class="font-semibold">{{ job.job_title }} at {{ job.company }}</h3>
+                <p class="text-sm text-gray-600">{{ job.start_date }} - {{ job.end_date or 'Present' }}</p>
+                <p>{{ job.job_description }}</p>
             </div>
-            <div class="mt-4">
-                <h3 class="font-semibold">Freelance Designer</h3>
-                <p class="text-sm text-gray-600">Jan 2018 - Mar 2020</p>
-                <p>Worked on various freelance projects, including branding and website design.</p>
-            </div>
+            {% endfor %}
         </section>
         <section class="mt-6">
             <h2 class="text-2xl font-bold border-b pb-2">Education</h2>
+            {% for edu in education %}
             <div class="mt-4">
-                <h3 class="font-semibold">Bachelor of Fine Arts</h3>
-                <p class="text-sm">National Institute of Design</p>
-                <p class="text-sm">2014 - 2018</p>
+                <h3 class="font-semibold">{{ edu.degree }}</h3>
+                <p class="text-sm">{{ edu.institution }}</p>
+                <p class="text-sm">{{ edu.edu_start_date }} - {{ edu.edu_end_date or 'Present' }}</p>
             </div>
+            {% endfor %}
         </section>
     </main>
 </body>
